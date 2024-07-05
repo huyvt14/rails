@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :products
-  get 'demo_partials/new'
-  get 'demo_partials/edit'
-  get 'static_pages/home'
-  get 'static_pages/help'
+  get "demo_partials/new"
+  get "demo_partials/edit"
+  get "static_pages/home"
+  get "static_pages/help"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
