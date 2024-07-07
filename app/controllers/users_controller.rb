@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 		return if @user
 
 		flash[:warning] = "Not found user!"
-
 		redirect_to root_path
 	end
 
@@ -18,6 +17,8 @@ class UsersController < ApplicationController
 
 	    if @user.save
 	      # Xử lý khi lưu thành công
+	      reset_session
+	      log_in @user
 	      flash[:success] =  "welcome_to_the_sample_app!"
 	      redirect_to @user, status: :see_other
 	    else

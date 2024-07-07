@@ -60,3 +60,8 @@ input {
     color: $state-danger-text; // Sử dụng biến Sass $state-danger-text
   }
 }
+
+/* Dropdown menu */
+.dropdown-menu.active {
+	display: block;
+}
