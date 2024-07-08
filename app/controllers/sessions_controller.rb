@@ -6,15 +6,16 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params.dig(:session, :email)&.downcase)
     
     if user&.authenticate(params.dig(:session, :password))
-      forwarding_url = session[:forwarding_url]
-      # Log the user in and redirect to the user's show page.
-      
-      reset_session
-      log_in(user)
-      params.dig(:session, :remember_me) == "1" ? remember(user) : forget(user)
-      redirect_to forwarding_url || user
-      # redirect_to user, status: :see_other
-
+      if user.activated?
+        forwarding_url = session[:forwarding_url]
+        reset_session
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        log_in user
+        redirect_to forwarding_url || user
+      else
+        flash[:warning] = "Account not activated. Check your email for the activation link."
+        redirect_to root_url, status: :see_other
+      end
     else
       # Create an error message.
       flash.now[:danger] = t "invalid_email_password_combination"

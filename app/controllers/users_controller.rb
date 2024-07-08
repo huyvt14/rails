@@ -23,14 +23,14 @@ class UsersController < ApplicationController
 	    @user = User.new(user_params)
 
 	    if @user.save
-	      # Xử lý khi lưu thành công
-	      reset_session
-	      log_in @user
-	      flash[:success] =  "welcome_to_the_sample_app!"
-	      redirect_to @user, status: :see_other
+	    	@user.send_activation_email
+	      	# Xử lý khi lưu thành công
+			# UserMailer.account_activation(@user).deliver_now
+			flash[:info] = "Please check your email to activate your account."
+			redirect_to root_url, status: :see_other
 	    else
-	      # Xử lý khi lưu không thành công
-	      render :new, status: :unprocessable_entity
+	      	# Xử lý khi lưu không thành công
+	      	render :new, status: :unprocessable_entity
 	    end
   	end
 
