@@ -7,12 +7,8 @@ class UsersController < ApplicationController
 	before_action :correct_user, only: %i(edit update)
 	before_action :admin_user, only: :destroy
 
-	def show 
-		@user = User.find_by id: params[:id]
-		return if @user
-
-		flash[:warning] = "Not found user!"
-		redirect_to root_path
+	def show
+		@page, @microposts = pagy @user.microposts, items: 10
 	end
 
 	def new
@@ -68,14 +64,6 @@ class UsersController < ApplicationController
 	  unless @user
 	    flash[:danger] = "User not found!"
 	    redirect_to root_url
-	  end
-	end
-
-	def logged_in_user
-	  unless logged_in?
-	  	store_location
-	    flash[:danger] = "Please log in."
-	    redirect_to login_url
 	  end
 	end
 

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	has_many :microposts, dependent: :destroy
 	validates :name, presence: true, length: {maximum: 50}
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
@@ -74,5 +75,8 @@ class User < ApplicationRecord
 		reset_sent_at < 2.hours.ago
 	end
 
+	def feed
+		microposts
+	end
 
 end
