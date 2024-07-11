@@ -12,4 +12,5 @@ class Micropost < ApplicationRecord
   end
   # default_scope -> {order created_at: :desc}
   scope :recent_posts, -> {order created_at: :desc}
+  scope :relate_post, ->(user_ids) { where(user_id: user_ids) }
 end

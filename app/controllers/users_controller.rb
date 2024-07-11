@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	# include Pagy::Backend
 
-
 	before_action :load_user, except: %i(index new create)
 	before_action :logged_in_user, except: %i(show new create)
 	before_action :correct_user, only: %i(edit update)
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
 
 	def create
 	    @user = User.new(user_params)
-
 	    if @user.save
 	    	@user.send_activation_email
 	      	# Xử lý khi lưu thành công
@@ -30,7 +28,7 @@ class UsersController < ApplicationController
 	    end
   	end
 
-  	def edit
+  	def edit 
   	end
 
 
@@ -55,6 +53,23 @@ class UsersController < ApplicationController
 	  end
 	  redirect_to users_path
 	end
+
+
+
+	def following
+	  @title = "Following"
+	  @pagy, @users = pagy(@user.following, items: 10)
+	  render :show_follow
+	end
+
+	def followers
+	  @title = "Followers"
+	  @pagy, @users = pagy(@user.followers, items: 10)
+	  render :show_follow
+	end
+
+
+
 
 	private
 

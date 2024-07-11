@@ -28,8 +28,24 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i(new create edit update)
   
   resources :microposts, only: %i(create destroy)
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  
+  resources :users do
+    collection do
+      get :tigers
+    end
+  end
+
+  resources :relationships,only: %i(create destroy)
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+
 end

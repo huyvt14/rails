@@ -1,8 +1,10 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
 .container {
   font-size: 2em;
 }
+
 h1{
 	margin-top: 100px;
 	display: flex;
@@ -29,8 +31,12 @@ aside {
 	}
 }
 
-.gravatar {float: left;margin-right: 10px;}
-.gravatar_edit {margin-top: 15px;}
+.gravatar {
+  float: left;margin-right: 10px;
+}
+.gravatar_edit {
+  margin-top: 15px;
+}
 
 /* forms */
 input, textarea, select, .uneditable-input {
@@ -145,4 +151,47 @@ span.picture {
     display: block;
     margin-left: 60px;
   }
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter; /* Assuming $gray-lighter is a Sass/SCSS variable */
+    color: gray;
+
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+
+  strong {
+    display: block;
+  }
+}
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+}
+
+.user_avatars .gravatar {
+  margin: 1px;
+}
+
+.user_avatars a {
+  padding: 0;
+}
+
+.users.follow {
+  padding: 0;
 }
