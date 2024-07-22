@@ -1,4 +1,5 @@
 class DemoPartialsController < ApplicationController
+  
   def new
     @zone = "Zone new action"
     @date = Date.today
@@ -6,6 +7,6 @@ class DemoPartialsController < ApplicationController
 
   def edit
     @zone = "Zone new action"
-    @date = Date.today-4
+    @date = Date.today - 4
   end
 end

@@ -3,28 +3,32 @@
   <head>
     <title><%= full_title yield(:title) %> </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
-
   <body>
-
     <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container"><%= link_to "sample app", "#", id: "logo" %>
+      <div class="container"><%= link_to "SAMPLE APP", "/static_pages/home", id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", "#" %></li>
-            <li><%= link_to "Help", "#" %></li>
-            <li><%= link_to "Log in", "#" %></li>
+            <li><%= link_to "Home", "/static_pages/home" %></li>
+            <li><%= link_to "Help", "/static_pages/help" %></li>
+            <%= render 'layouts/header' %>
           </ul>
         </nav>
       </div>
     </header>
-
-    <div class="container"><%= yield %></div>
-
+    <div class="container0">
+      <div class="container">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
