@@ -1,0 +1,17 @@
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - double_quotes
+    - single_quotes
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 80
+
+Style/WordArray:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: true
