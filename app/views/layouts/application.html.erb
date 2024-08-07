@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title><%= full_title yield(:title) %> </title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1" >
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,28 +11,27 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
 
+  <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container"><%= link_to "SAMPLE APP", "#", id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-
-            <li><%= link_to "Home", "#" %></li>
-            <li><%= link_to "Help", "#" %></li>
-            <li><%= link_to "Log in", "#" %></li>
+            <li><%= link_to "Home", "/static_pages/home" %></li>
+            <li><%= link_to "Help", "/static_pages/help" %></li>
+            <%= render 'layouts/header' %>
           </ul>
         </nav>
       </div>
     </header>
-    <%# <%= render 'layouts/header' %> %>
-
     <div class="container">
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>">
+        <div class="alert alert-<%= message_type %>" >
+
           <%= message %>
         </div>
       <% end %>
       <%= yield %>
+    </div>
   </body>
 </html>

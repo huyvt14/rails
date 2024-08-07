@@ -2,7 +2,6 @@
 
 class UsersController < ApplicationController
 
-
   before_action :find_user, only: [:show]
 
   def show
@@ -15,7 +14,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       # Xử lý khi lưu thành công
       flash[:success] = "welcome_to_the_sample_app!"
