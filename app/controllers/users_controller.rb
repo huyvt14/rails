@@ -1,34 +1,40 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
 
-	def show 
-		@user = User.find_by id: params[:id]
-		return if @user
+  before_action :find_user, only: [:show]
 
-		flash[:warning] = "Not found user!"
-		redirect_to root_path
-	end
+  def show
+    @user
+  end
 
-	def new
-		@user = User.new
-	end
+  def new
+    @user = User.new
+  end
 
-	def create
-	    @user = User.new(user_params)
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      # Xử lý khi lưu thành công
+      flash[:success] = "welcome_to_the_sample_app!"
+      redirect_to @user, status: :see_other
+    else
+      # Xử lý khi lưu không thành công
+      render :new, status: :unprocessable_entity
+    end
+  end
 
-	    if @user.save
-	      # Xử lý khi lưu thành công
-	      reset_session
-	      log_in @user
-	      flash[:success] =  "welcome_to_the_sample_app!"
-	      redirect_to @user, status: :see_other
-	    else
-	      # Xử lý khi lưu không thành công
-	      render :new, status: :unprocessable_entity
-	    end
-  	end
+  private
 
-	private
-	def user_params
-	params.require(:user).permit(:name, :email, :password, :password_confirmation)
-	end
+  def user_params
+    params.require(:user).permit(:name, :email, :password,
+                                 :password_confirmation)
+  end
+
+  def find_user
+    @user = User.find_by(id: params[:id])
+    unless @user
+      flash[:warning] = "Not found user!"
+      redirect_to root_path
+    end
 end
