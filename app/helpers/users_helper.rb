@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# app/helpers/users_helper.rb
 module UsersHelper
   # Returns the Gravatar for the given user.
   def gravatar_for(user)
