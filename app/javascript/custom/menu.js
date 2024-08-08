@@ -1,5 +1,3 @@
-// Menu manipulation
-
 document.addEventListener('turbo:load', function () {
   let account = document.querySelector('#account');
 

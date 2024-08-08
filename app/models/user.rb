@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  validates :password, presence: Settings.user.password.presence,
+                       length: { minimum: Settings.user.password.length.minimum }, allow_nil: true
+
   validates :name, presence: Settings.user.name.presence,
                    length: { maximum: Settings.user.name.length.maximum }
 

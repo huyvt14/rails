@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_240_704_143_217) do
+ActiveRecord::Schema[7.0].define(version: 20_240_708_025_848) do
   create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci",
                            force: :cascade do |t|
     t.string "name"
@@ -28,5 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 20_240_704_143_217) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.boolean "admin"
   end
 end
