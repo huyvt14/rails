@@ -47,6 +47,9 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "bootsnap", require: false
 
 gem "bootstrap-sass", "3.4.1"
+gem "faker", "2.21.0"
+gem "pagy"
+gem "rails-settings-cached"
 gem "sassc-rails"
 
 gem "config"

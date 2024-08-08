@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title><%= full_title yield(:title) %> </title>
     <meta name="viewport" content="width=device-width,initial-scale=1" >
@@ -8,6 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container"><%= link_to "SAMPLE APP", "#", id: "logo" %>
